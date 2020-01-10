@@ -2,8 +2,6 @@ import arcade
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Shape List Demo Person"
-
 
 def make_person(head_radius,
                 chest_height,
@@ -23,41 +21,41 @@ def make_person(head_radius,
     shape_list.append(shape)
 
     # Chest
-    shape = arcade.create_rectangle_filled(0, 0, chest_width, chest_height, arcade.color.BLACK)
+    shape = arcade.create_rectangle_filled(0, 0, chest_width, chest_height, arcade.color.WHITE)
     shape_list.append(shape)
 
     # Left leg
     shape = arcade.create_rectangle_filled(-(chest_width / 2) + leg_width / 2, -(chest_height / 2) - leg_height / 2,
-                                           leg_width, leg_height, arcade.color.RED)
+                                           leg_width, leg_height, arcade.color.WHITE)
     shape_list.append(shape)
 
     # Right leg
     shape = arcade.create_rectangle_filled((chest_width / 2) - leg_width / 2, -(chest_height / 2) - leg_height / 2,
-                                           leg_width, leg_height, arcade.color.RED)
+                                           leg_width, leg_height, arcade.color.WHITE)
     shape_list.append(shape)
 
     # Left arm
     shape = arcade.create_rectangle_filled(-(chest_width / 2) - arm_width / 2 - arm_gap,
                                            (chest_height / 2) - arm_length / 2 - shoulder_height, arm_width, arm_length,
-                                           arcade.color.BLUE)
+                                           arcade.color.WHITE)
     shape_list.append(shape)
 
     # Left shoulder
     shape = arcade.create_rectangle_filled(-(chest_width / 2) - (arm_gap + arm_width) / 2,
                                            (chest_height / 2) - shoulder_height / 2, arm_gap + arm_width,
-                                           shoulder_height, arcade.color.BLUE_BELL)
+                                           shoulder_height, arcade.color.WHITE)
     shape_list.append(shape)
 
     # Right arm
     shape = arcade.create_rectangle_filled((chest_width / 2) + arm_width / 2 + arm_gap,
                                            (chest_height / 2) - arm_length / 2 - shoulder_height, arm_width, arm_length,
-                                           arcade.color.BLUE)
+                                           arcade.color.WHITE)
     shape_list.append(shape)
 
     # Right shoulder
     shape = arcade.create_rectangle_filled((chest_width / 2) + (arm_gap + arm_width) / 2,
                                            (chest_height / 2) - shoulder_height / 2, arm_gap + arm_width,
-                                           shoulder_height, arcade.color.BLUE_BELL)
+                                           shoulder_height, arcade.color.WHITE)
     shape_list.append(shape)
 
     return shape_list
