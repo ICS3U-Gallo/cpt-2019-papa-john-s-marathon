@@ -112,10 +112,23 @@ class MyGame(arcade.Window):
         self.shape_list.draw()
 
     def on_update(self, delta_time):
+      
+      bounce=False
+      if bounce==True:
+        bounce_value = 0.5
+      else:
+        bounce_value = 0
         """ Movement and game logic """
-        self.shape_list.center_x += 1
-        self.shape_list.center_y += 1
-        self.shape_list.angle += .1
+        
+      if self.shape_list.center_y ==5:
+        bounce==TRUE
+        angle = self.shape_list.angle
+      elif self.shape_list.center_y == 20:
+        bounce == False
+             
+        self.shape_list.center_x += movement_x
+        self.shape_list.center_y += bounce - GRAVITY_CONSTANT
+        self.shape_list.angle += 0
 
 
 def main():
