@@ -3,6 +3,10 @@ import arcade
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+GRAVITY_CONSTANT = 0.3
+
+BOUNCINESS = 0.1
+
 def make_person(head_radius,
                 chest_height,
                 chest_width,
