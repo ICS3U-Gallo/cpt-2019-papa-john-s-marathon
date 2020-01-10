@@ -7,6 +7,8 @@ GRAVITY_CONSTANT = 0.3
 
 BOUNCINESS = 0.1
 
+MOVEMENT_SPEED = 3
+
 def make_person(head_radius,
                 chest_height,
                 chest_width,
@@ -93,7 +95,7 @@ class MyGame(arcade.Window):
                                       arm_gap,
                                       shoulder_height)
 
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.BLACK)
 
     def setup(self):
 
