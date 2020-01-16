@@ -145,14 +145,14 @@ class FinishScreen(arcade.View):
         super().__init__()
 
     def on_show(self):
-        arcade.set_background_color(arcade.color.BLACK)
+        arcade.set_background_color(arcade.color.ORANGE)
 
     def on_draw(self):
         global total_time
         arcade.start_render()
-        arcade.draw_text("Pizza Score", 190, 400, arcade.color.WHITE, 54)
+        arcade.draw_text("Pizza Score", 190, 400, arcade.color.BLACK, 54)
 
-        time_taken_formatted = f"{100 - total_time} points"
+        time_taken_formatted = f"{70 - total_time} points"
         arcade.draw_text(f"Score: {time_taken_formatted}", WIDTH / 2, 200, arcade.color.WHITE, font_size=15, anchor_x="center")
 
 def main():
