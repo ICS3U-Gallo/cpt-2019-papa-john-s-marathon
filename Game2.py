@@ -22,7 +22,10 @@ V_x = 100
 V_y = 200
 O_x = 100
 O_y = 100
-button_count = 0
+p_button_count = 0
+c_button_count = 0
+v_button_count = 0
+o_button_count = 0
 total_time = 0.0
 file_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(file_path)
@@ -90,32 +93,32 @@ class MyGame(arcade.View):
             peptop = True
 
     def on_key_press(self, key, modifiers):
-        global Pepperoni, Cheese, Vegetable, Onion, button_count, stop
+        global Pepperoni, Cheese, Vegetable, Onion, p_button_count, v_button_count, o_button_count, c_button_count, stop
         if key == arcade.key.P:
             Pepperoni = True
-            button_count += 1
+            p_button_count += 1
         elif key == arcade.key.V:
             Vegetable = True
-            button_count += 1
+            v_button_count += 1
         elif key == arcade.key.C:
             Cheese = True
-            button_count += 1
+            c_button_count += 1
         elif key == arcade.key.O:
             Onion = True
-            button_count += 1
+            o_button_count += 1
 
-        if button_count == 2 and key == arcade.key.P:
+        if p_button_count == 2 and key == arcade.key.P:
             Pepperoni = False
-            button_count -= 2
-        elif button_count == 2 and key == arcade.key.C:
+            p_button_count -= 2
+        elif c_button_count == 2 and key == arcade.key.C:
             Cheese = False
-            button_count -= 2
-        elif button_count == 2 and key == arcade.key.V:
+            c_button_count -= 2
+        elif v_button_count == 2 and key == arcade.key.V:
             Vegetable = False
-            button_count -= 2
-        elif button_count == 2 and key == arcade.key.O:
+            v_button_count -= 2
+        elif o_button_count == 2 and key == arcade.key.O:
             Onion = False
-            button_count -= 2
+            o_button_count -= 2
 
         if key == arcade.key.ENTER:
             stop = True
