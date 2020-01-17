@@ -180,7 +180,7 @@ class FinishScreen(arcade.View):
         
      def on_key_press(self, key, modifiers):
         if key == arcade.key.ENTER:
-            next_game == Game3()
+            next_game == Game3View()
             self.window.show_view(next_game)
 
 def main():
