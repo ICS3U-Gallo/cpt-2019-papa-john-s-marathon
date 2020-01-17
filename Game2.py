@@ -185,7 +185,7 @@ class FinishScreen(arcade.View):
 
 def main():
     window = arcade.Window(WIDTH, HEIGHT, TITLE)
-    menu_view = Instructions()
+    menu_view = Chapter2View()
     window.show_view(menu_view)
     arcade.run()
 
