@@ -81,6 +81,7 @@ class Game3View(arcade.View):
             minutes = 0
             car_sprite.remove()
             money.remove()
+            self.director.next_view()
 
         if len_gas_money <= 0:  # you lose
             lose.draw()
