@@ -1,6 +1,6 @@
 import arcade
 import random
-import time
+
 
 WIDTH = 800
 HEIGHT = 600
@@ -12,20 +12,16 @@ instructions = arcade.Sprite("Sprites3/instruction_screen.png", center_x=WIDTH /
 lose = arcade.Sprite('Sprites3/lose_screen.png', center_x=WIDTH / 2, center_y=HEIGHT / 2, scale=1)
 win = arcade.Sprite('Sprites3/win_screen.png', center_x=WIDTH / 2, center_y=HEIGHT / 2, scale=1)
 
-
-class MyGame(arcade.Window):
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title)
+class Game3View(arcade.View):
+    def on_show(self):
         arcade.set_background_color(arcade.color.ASH_GREY)
-
-        self.total_time = 70.0
 
     def setup(self):
         global down_motion, down_motion2, down_motion3
         global grow_big, grow_big2
         global grow_long, grow_long2
         global direction, added
-        global len_gas_money, delta_time
+        global len_gas_money
         self.total_time = 70.0
         down_motion = HEIGHT
         grow_big = 10
@@ -99,8 +95,6 @@ class MyGame(arcade.Window):
             down_motion3 = HEIGHT + 30
             car_sprite.remove()
 
-
-
         money.draw()
         car_sprite.draw()
 
@@ -125,7 +119,7 @@ class MyGame(arcade.Window):
         global left_pressed, right_pressed
 
         self.total_time -= delta_time
-        len_gas_money -= 0.15
+        len_gas_money -= 0.25
         direction += added
         down_motion -= 4
         down_motion2 -= 4
@@ -137,7 +131,7 @@ class MyGame(arcade.Window):
 
         money = arcade.Sprite('Sprites3/money.png', center_x=direction, center_y=down_motion3, scale=0.35)
         hit = arcade.check_for_collision(car_sprite, money)
-        if hit == True:
+        if hit:
             len_gas_money += 1
             hit = False
 
@@ -151,11 +145,17 @@ class MyGame(arcade.Window):
                 car_sprite.center_x -= 6
 
 
-def main():
-    game = MyGame(WIDTH, HEIGHT, "My Game")
-    game.setup()
-    arcade.run()
-
-
 if __name__ == "__main__":
-    main()
+    """This section of code will allow you to run your View
+    independently from the main.py file and its Director.
+    You can ignore this whole section. Keep it at the bottom
+    of your code.
+    It is advised you do not modify it unless you really know
+    what you are doing.
+    """
+    from utils import FakeDirector
+    window = arcade.Window(WIDTH, HEIGHT)
+    my_view = Game3View()
+    my_view.director = FakeDirector(close_on_next_view=True)
+    window.show_view(my_view)
+    arcade.run()
