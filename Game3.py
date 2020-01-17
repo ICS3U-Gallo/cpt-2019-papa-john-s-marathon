@@ -81,6 +81,8 @@ class MyGame(arcade.Window):
 
         if seconds <= 0 and minutes <= 0:  # you win
             win.draw()
+            seconds = 0
+            minutes = 0
             car_sprite.remove()
             money.remove()
 
