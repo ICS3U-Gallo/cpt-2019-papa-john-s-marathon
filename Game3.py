@@ -25,7 +25,7 @@ class MyGame(arcade.Window):
         global grow_big, grow_big2
         global grow_long, grow_long2
         global direction, added
-        global len_gas_money, delta_time, Flag
+        global len_gas_money, delta_time
         self.total_time = 70.0
         down_motion = HEIGHT
         grow_big = 10
