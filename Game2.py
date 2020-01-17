@@ -180,7 +180,7 @@ class FinishScreen(arcade.View):
         arcade.draw_text("Press Enter to move on", WIDTH/2, 150, arcade.color.BLACK, font_size=15, anchor_x="center")
         
     def on_key_press(self, key, modifiers):
-        if key == arcade.key.ENTER:
+        if key == arcade.key.M:
             self.director.next_view()
             #next_game == Game3View()
             #self.window.show_view(next_game)
