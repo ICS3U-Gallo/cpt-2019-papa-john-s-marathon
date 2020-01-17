@@ -27,6 +27,7 @@ c_button_count = 0
 v_button_count = 0
 o_button_count = 0
 total_time = 0.0
+extra = 0
 file_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(file_path)
 
@@ -48,9 +49,10 @@ class Instructions(arcade.View):
         arcade.draw_circle_filled(WIDTH / 2 + 200, HEIGHT / 2 - 175, 25, arcade.color.RED)
         arcade.draw_text("Tutorial", 250, 300, arcade.color.GREEN, 25)
         arcade.draw_text("Click and Drop Pizza toppings using your mouse", 20, 150, arcade.color.BLACK, 25)
-        arcade.draw_text("Press P to move the Pepperoni", 20, 100, arcade.color.BLACK, 25)
-        arcade.draw_text("Press C to move the Cheese", 20, 75, arcade.color.BLACK, 25)
-        arcade.draw_text("Press V to move the Vegetable", 20, 50, arcade.color.BLACK, 25)
+        arcade.draw_text("Press P to move the Pepperoni", 20, 125, arcade.color.BLACK, 25)
+        arcade.draw_text("Press C to move the Cheese", 20, 100, arcade.color.BLACK, 25)
+        arcade.draw_text("Press V to move the Vegetable", 20, 75, arcade.color.BLACK, 25)
+        arcade.draw_text("Press again to release topping", 20, 50, arcade.color.BLACK, 25)
         arcade.draw_text("Press Enter to play", 20, 200, arcade.color.BLACK, 25)
 
     def on_key_press(self, key, modifiers):
@@ -91,6 +93,15 @@ class MyGame(arcade.View):
             total_time -= 1
         if P_x > 125 or P_x < 325 and P_y > 540 or P_y < 140:
             peptop = True
+        elif P_x > 125 or P_x < 325 and P_y > 540 or P_y < 140:
+            peptop = True
+        elif C_x > 125 or C_x < 325 and C_y > 540 or C_y < 140:
+            cheetop = True
+        elif V_x > 125 or V_x < 325 and V_y > 540 or V_y < 140:
+            vegtop = True
+        elif O_x > 125 or O_x < 325 and O_y > 540 or O_y < 140:
+            ontop = True
+
 
     def on_key_press(self, key, modifiers):
         global Pepperoni, Cheese, Vegetable, Onion, p_button_count, v_button_count, o_button_count, c_button_count, stop
@@ -150,13 +161,22 @@ class FinishScreen(arcade.View):
     def on_show(self):
         arcade.set_background_color(arcade.color.ORANGE)
 
-    def on_draw(self):
-        global total_time
+        def on_draw(self):
+        global total_time, peptop, vegtop, cheetop, ontop, extra
         arcade.start_render()
-        arcade.draw_text("Pizza Score", 190, 400, arcade.color.BLACK, 54)
+        arcade.draw_text("Pizza Score", 190, 400, arcade.color.WHITE, 54)
 
-        time_taken_formatted = f"{70 - total_time} points"
-        arcade.draw_text(f"Score: {time_taken_formatted}", WIDTH / 2, 200, arcade.color.WHITE, font_size=15, anchor_x="center")
+        time_taken_formatted = 70 - total_time
+        if peptop == True:
+            extra += 10
+        elif vegtop == True:
+            extra += 10
+        elif cheetop == True:
+            extra += 10
+        elif ontop == True:
+            extra += 10
+        time_taken_formatted2 = f"{time_taken_formatted + extra} points"
+        arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.WHITE, font_size=15, anchor_x="center")
 
 def main():
     window = arcade.Window(WIDTH, HEIGHT, TITLE)
