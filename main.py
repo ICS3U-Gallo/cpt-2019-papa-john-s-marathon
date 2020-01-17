@@ -15,7 +15,8 @@ class Director(arcade.Window):
         self.views = [
             MenuView,
             Chapter1View,
-            Chapter2View
+            Chapter2View,
+            Game3View
         ]
         self.next_view()
 
