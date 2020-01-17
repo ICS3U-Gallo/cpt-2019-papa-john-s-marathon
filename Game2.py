@@ -177,7 +177,7 @@ class FinishScreen(arcade.View):
             extra += 10
         time_taken_formatted2 = f"{time_taken_formatted + extra} points"
         arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.BLACK, font_size=15, anchor_x="center")
-        arcade.draw_text("Press Enter to move on", WIDTH/2, 150, arcade.color.BLACK, font_size=15, anchor_x="center")
+        arcade.draw_text("Press M to move on", WIDTH/2, 150, arcade.color.BLACK, font_size=15, anchor_x="center")
         
     def on_key_press(self, key, modifiers):
         if key == arcade.key.M:
