@@ -161,7 +161,7 @@ class FinishScreen(arcade.View):
     def on_show(self):
         arcade.set_background_color(arcade.color.ORANGE)
 
-        def on_draw(self):
+    def on_draw(self):
         global total_time, peptop, vegtop, cheetop, ontop, extra
         arcade.start_render()
         arcade.draw_text("Pizza Score", 190, 400, arcade.color.BLACK, 54)
@@ -179,7 +179,7 @@ class FinishScreen(arcade.View):
         arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.BLACK, font_size=15, anchor_x="center")
         arcade.draw_text("Press Enter to move on", WIDTH/2, 150, arcade.color.BLACK, font_soze=15, anchor_x="center")
         
-     def on_key_press(self, key, modifiers):
+    def on_key_press(self, key, modifiers):
         if key == arcade.key.ENTER:
             self.director.next_view()
             #next_game == Game3View()
