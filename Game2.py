@@ -164,7 +164,7 @@ class FinishScreen(arcade.View):
         def on_draw(self):
         global total_time, peptop, vegtop, cheetop, ontop, extra
         arcade.start_render()
-        arcade.draw_text("Pizza Score", 190, 400, arcade.color.WHITE, 54)
+        arcade.draw_text("Pizza Score", 190, 400, arcade.color.BLACK, 54)
 
         time_taken_formatted = 70 - total_time
         if peptop == True:
@@ -176,12 +176,14 @@ class FinishScreen(arcade.View):
         elif ontop == True:
             extra += 10
         time_taken_formatted2 = f"{time_taken_formatted + extra} points"
-        arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.WHITE, font_size=15, anchor_x="center")
+        arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.BLACK, font_size=15, anchor_x="center")
+        arcade.draw_text("Press Enter to move on", WIDTH/2, 150, arcade.color.BLACK, font_soze=15, anchor_x="center")
         
      def on_key_press(self, key, modifiers):
         if key == arcade.key.ENTER:
-            next_game == Game3View()
-            self.window.show_view(next_game)
+            self.director.next_view()
+            #next_game == Game3View()
+            #self.window.show_view(next_game)
 
 def main():
     window = arcade.Window(WIDTH, HEIGHT, TITLE)
