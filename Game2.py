@@ -177,6 +177,11 @@ class FinishScreen(arcade.View):
             extra += 10
         time_taken_formatted2 = f"{time_taken_formatted + extra} points"
         arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.WHITE, font_size=15, anchor_x="center")
+        
+     def on_key_press(self, key, modifiers):
+        if key == arcade.key.ENTER:
+            next_game == Game3()
+            self.window.show_view(next_game)
 
 def main():
     window = arcade.Window(WIDTH, HEIGHT, TITLE)
