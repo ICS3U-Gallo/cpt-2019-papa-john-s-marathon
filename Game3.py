@@ -33,7 +33,7 @@ direction = WIDTH / 2
 added = 0
 
 # Initial length for fuel tank
-len_gas_money = 200
+len_gas_money = 225
 
 
 class Game3View(arcade.View):
