@@ -1,40 +1,39 @@
 import arcade
 import random
 
-
 WIDTH = 800
 HEIGHT = 600
 left_pressed = False
 right_pressed = False
+SCREEN_TITLE = 'Game 3'
 
 car_sprite = arcade.Sprite('Sprites3/car_sprite.png', center_x=WIDTH / 2, center_y=40, scale=0.35)
 instructions = arcade.Sprite("Sprites3/instruction_screen.png", center_x=WIDTH / 2, center_y=HEIGHT / 2, scale=1)
 lose = arcade.Sprite('Sprites3/lose_screen.png', center_x=WIDTH / 2, center_y=HEIGHT / 2, scale=1)
 win = arcade.Sprite('Sprites3/win_screen.png', center_x=WIDTH / 2, center_y=HEIGHT / 2, scale=1)
 
+down_motion = HEIGHT
+grow_big = 10
+grow_long = 2
+
+down_motion2 = HEIGHT / 2
+grow_big2 = 20
+grow_long2 = 4
+down_motion3 = HEIGHT
+
+direction = WIDTH / 2
+added = 0
+len_gas_money = 200
+
+
 class Game3View(arcade.View):
+
+    def __init__(self):
+        super().__init__()
+        self.total_time = 10.0
+
     def on_show(self):
         arcade.set_background_color(arcade.color.ASH_GREY)
-
-    def setup(self):
-        global down_motion, down_motion2, down_motion3
-        global grow_big, grow_big2
-        global grow_long, grow_long2
-        global direction, added
-        global len_gas_money
-        self.total_time = 70.0
-        down_motion = HEIGHT
-        grow_big = 10
-        grow_long = 2
-
-        down_motion2 = HEIGHT / 2
-        grow_big2 = 20
-        grow_long2 = 4
-        down_motion3 = HEIGHT
-
-        direction = WIDTH / 2
-        added = 0
-        len_gas_money = 200
 
     def on_draw(self):
         global down_motion, down_motion2, down_motion3
@@ -46,6 +45,7 @@ class Game3View(arcade.View):
         arcade.start_render()
 
         # Set up timer
+
         minutes = int(self.total_time) // 60
         seconds = int(self.total_time) % 60
         output = f"Time: {minutes:02d}:{seconds:02d}"
@@ -79,25 +79,27 @@ class Game3View(arcade.View):
             win.draw()
             seconds = 0
             minutes = 0
-            car_sprite.remove()
-            money.remove()
-            self.director.next_view()
+            direction = 0
+            down_motion3 = 0
+            car_sprite.center_x = WIDTH + 100
 
         if len_gas_money <= 0:  # you lose
             lose.draw()
             len_gas_money = 0
             down_motion3 = 0
             direction = 0
-            car_sprite.remove()
+            car_sprite.center_x = WIDTH + 100
+            arcade.draw_text('PRESS ENTER TO PLAY AGAIN',
+                             WIDTH*0.35, HEIGHT*0.35, arcade.color.BLACK, 20)
 
         if minutes >= 1:
             instructions.draw()
             arcade.draw_text(sec_output, WIDTH * 0.355, HEIGHT * 0.08, arcade.color.BLACK, 30)
             down_motion3 = HEIGHT + 30
-            car_sprite.remove()
 
-        money.draw()
-        car_sprite.draw()
+        elif minutes <= 1:
+            money.draw()
+            car_sprite.draw()
 
     def on_key_press(self, key, key_modifiers):
 
@@ -155,6 +157,7 @@ if __name__ == "__main__":
     what you are doing.
     """
     from utils import FakeDirector
+
     window = arcade.Window(WIDTH, HEIGHT)
     my_view = Game3View()
     my_view.director = FakeDirector(close_on_next_view=True)
