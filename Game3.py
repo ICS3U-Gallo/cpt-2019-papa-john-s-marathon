@@ -95,6 +95,8 @@ class Game3View(arcade.View):
         if seconds <= 0 and minutes <= 0:  # you win
             win.draw()
             minutes = 0
+            seconds = 0
+            len_gas_money += 0.25
             direction = 0
             down_motion3 = 0
             car_sprite.center_x = WIDTH + 100
