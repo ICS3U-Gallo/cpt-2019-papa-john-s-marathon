@@ -1,3 +1,4 @@
+# Developed by Rahul Gour
 import arcade
 import random
 import time
@@ -6,7 +7,7 @@ WIDTH = 800
 HEIGHT = 600
 left_pressed = False
 right_pressed = False
-SCREEN_TITLE = 'Game 3'
+
 
 car_sprite = arcade.Sprite('Sprites3/car_sprite.png',
                            center_x=WIDTH / 2, center_y=40, scale=0.35)
