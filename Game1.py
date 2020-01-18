@@ -5,7 +5,7 @@ from random import shuffle
 
 
 # --- Constants ---
-SPRITE_SCALING_CLOTHING = 1
+SPRITE_SCALING_CLOTHING = 1.7
 SPRITE_SCALING = 0.75
 CLOTHING_COUNT = 8
 
@@ -32,6 +32,7 @@ class MyGame(arcade.Window):
         # Variables that will hold sprite lists
         self.pants_list = None
         self.shirts_list = None
+        self.sillouhette = None
 
         self.score = 0
 
@@ -61,9 +62,9 @@ class MyGame(arcade.Window):
 
             # Position the shirts
             shirts.center_x = 50
-            shirts.center_y = i*SCREEN_HEIGHT/8 + 50
-
-            # Add the pants to the lists
+            shirts.center_y = i*SCREEN_HEIGHT/8+shirts.height/2
+            shirts.guid = "s"+str(j[i][0])
+            # Add the shirts to the lists
             self.shirts_list.append(shirts)
 
         j = [[i] for i in range(CLOTHING_COUNT)]
@@ -76,29 +77,77 @@ class MyGame(arcade.Window):
 
             # Position the pants
             pants.center_x = 150
-            pants.center_y = i*SCREEN_HEIGHT/8 + 50
-
+            pants.center_y = i*SCREEN_HEIGHT/8+pants.height/2
+            pants.guid = "p"+str(j[i][0])
             # Add the pants to the lists
             self.pants_list.append(pants)
         
+        self.sillouhette = arcade.Sprite("resources/images/items/sillhouette.png",1.3)
+
+        self.sillouhette.center_x = 500      
+        self.sillouhette.center_y = SCREEN_HEIGHT/2
+
 
     def on_draw(self):
         """ Draw everything """
         arcade.start_render()
-        self.pants_list.draw()
+        self.sillouhette.draw()
         self.shirts_list.draw()
+        self.pants_list.draw()
+
+        i=1
+        for sprite in self.shirts_list:
+            arcade.draw_text(str(i), sprite.center_x-5 , sprite.center_y-5, arcade.color.YELLOW, 20)
+            i=i+1
+        i=1
+        for sprite in self.pants_list:
+            arcade.draw_text(str(i), sprite.center_x-5 , sprite.center_y-5, arcade.color.YELLOW, 20)
+            i=i+1
 
         # Put the text on the screen.
         output = f"Score: {self.score}"
-        arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        arcade.draw_text(output, SCREEN_WIDTH - 100, SCREEN_HEIGHT - 30, arcade.color.BLACK, 14)
 
-    def on_mouse_motion(self, x, y, dx, dy):
-        print(self.pants_list)
-        sprite_list = arcade.get_sprites_at_point((x, y), self.pants_list)
-        print(sprite_list)
+    def on_mouse_release(self, x, y, dx, dy):
+
         sprite_list = arcade.get_sprites_at_point((x, y), self.shirts_list)
-        print(sprite_list)
-        """ Handle Mouse Motion """
+        if len(sprite_list) > 0:
+            i = 0
+            guid=None
+            for sprite in self.shirts_list:
+                if(sprite.scale==SPRITE_SCALING_CLOTHING):
+                    guid = sprite.guid
+                    sprite.scale=SPRITE_SCALING
+                    sprite.center_x = 50
+                    sprite.center_y = i*SCREEN_HEIGHT/8+sprite.height/2
+                    self.score = self.score-int(guid[1])
+                    break
+                i=i+1
+            print(sprite_list[0].guid, guid)
+            if(sprite_list[0].guid!=guid):
+                sprite_list[0].center_x=500
+                sprite_list[0].center_y=380
+                sprite_list[0].scale=SPRITE_SCALING_CLOTHING
+                self.score = self.score+int(sprite_list[0].guid[1])
+        sprite_list = arcade.get_sprites_at_point((x, y), self.pants_list)
+        if len(sprite_list) > 0:
+            i = 0
+            guid=None
+            for sprite in self.pants_list:
+                if(sprite.scale==SPRITE_SCALING_CLOTHING):
+                    guid = sprite.guid
+                    sprite.scale=SPRITE_SCALING
+                    sprite.center_x = 150
+                    sprite.center_y = i*SCREEN_HEIGHT/8+sprite.height/2
+                    self.score = self.score-int(guid[1])
+                    break
+                i=i+1
+            print(sprite_list[0].guid, guid)
+            if(sprite_list[0].guid!=guid):
+                sprite_list[0].center_x=500
+                sprite_list[0].center_y=200
+                sprite_list[0].scale=SPRITE_SCALING_CLOTHING
+                self.score = self.score+int(sprite_list[0].guid[1])
 
     def on_update(self, delta_time):
         pass
