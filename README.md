@@ -1,9 +1,20 @@
-# Program Title (replace)
-Program description. Replace with description of your program. Give a description of each scene.
+# PaPa Johns's Marathon
+The player is a pizza guy working at Papa John’s. Dress up for the job, make the pizza, deliver it, then fight your boss. If you do everything properly, your family won’t leave you.
+
+Scene 1 - Dress the employee for the job. Looking good matters, and you're scored based on how professial you arrive.
+
+Scene 2 - Make the pizza by adding toppings. The faster you finish, the happier customers will be.
+
+Scene 3 - Deliver the Pizza successfully by collecting coins to boost the fuel tank. Survive for 60 seconds
+seconds without running out of gas.
+
+Scene 4 - Whack your boss in the face after he refuses to pay you. Fight 
 
 ### Group Members:
-- Member1
-- Member2
+- (1)Andre
+- (2)Ethan
+- (3)Rahul
+- (4)Mark
 
 
 # CPT 2019
