@@ -91,15 +91,15 @@ class MyGame(arcade.View):
         total_time += delta_time
         if stop == True:
             total_time -= 1
-        if P_x > 125 or P_x < 325 and P_y > 540 or P_y < 140:
+        if P_x > 125 or P_x < 325 and P_y > 540 or P_y < 140 and stop == False:
             peptop = True
-        elif P_x > 125 or P_x < 325 and P_y > 540 or P_y < 140:
+        elif P_x > 125 or P_x < 325 and P_y > 540 or P_y < 140 and stop == False:
             peptop = True
-        elif C_x > 125 or C_x < 325 and C_y > 540 or C_y < 140:
+        elif C_x > 125 or C_x < 325 and C_y > 540 or C_y < 140 and stop == False:
             cheetop = True
-        elif V_x > 125 or V_x < 325 and V_y > 540 or V_y < 140:
+        elif V_x > 125 or V_x < 325 and V_y > 540 or V_y < 140 and stop == False:
             vegtop = True
-        elif O_x > 125 or O_x < 325 and O_y > 540 or O_y < 140:
+        elif O_x > 125 or O_x < 325 and O_y > 540 or O_y < 140 and stop == False:
             ontop = True
 
 
