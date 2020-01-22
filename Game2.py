@@ -186,7 +186,9 @@ class FinishScreen(arcade.View):
             #self.window.show_view(next_game)
 
 def main():
+    from utils import FakeDirector
     window = arcade.Window(WIDTH, HEIGHT, TITLE)
+    my_view.director = FakeDirector(close_on_next_view=True)
     menu_view = Chapter2View()
     window.show_view(menu_view)
     arcade.run()
