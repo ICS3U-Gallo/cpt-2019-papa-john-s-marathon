@@ -61,11 +61,7 @@ class Game1View(arcade.View):
 
             # Position the shirts
             shirts.center_x = 50
-<<<<<<< HEAD
             shirts.center_y = i*HEIGHT/8+shirts.height/2
-=======
-            shirts.center_y = i*SCREEN_HEIGHT/8+shirts.height/2
->>>>>>> 6747fccc9298fd8ab3d88792c62c82ab380a38a4
             shirts.guid = "s"+str(j[i][0])
             # Add the shirts to the lists
             self.shirts_list.append(shirts)
@@ -80,17 +76,12 @@ class Game1View(arcade.View):
 
             # Position the pants
             pants.center_x = 150
-<<<<<<< HEAD
             pants.center_y = i*HEIGHT/8+pants.height/2
-=======
-            pants.center_y = i*SCREEN_HEIGHT/8+pants.height/2
->>>>>>> 6747fccc9298fd8ab3d88792c62c82ab380a38a4
             pants.guid = "p"+str(j[i][0])
             # Add the pants to the lists
             self.pants_list.append(pants)
         
         self.sillouhette = arcade.Sprite("resources/images/items/sillhouette.png",1.3)
-<<<<<<< HEAD
 
         self.sillouhette.center_x = 500      
         self.sillouhette.center_y = HEIGHT/2
@@ -126,35 +117,6 @@ class Game1View(arcade.View):
     def on_mouse_release(self, x, y, dx, dy):
 
         self.instructions = 2
-=======
-
-        self.sillouhette.center_x = 500      
-        self.sillouhette.center_y = SCREEN_HEIGHT/2
-
-
-    def on_draw(self):
-        """ Draw everything """
-        arcade.start_render()
-        self.sillouhette.draw()
-        self.shirts_list.draw()
-        self.pants_list.draw()
-
-        i=1
-        for sprite in self.shirts_list:
-            arcade.draw_text(str(i), sprite.center_x-5 , sprite.center_y-5, arcade.color.YELLOW, 20)
-            i=i+1
-        i=1
-        for sprite in self.pants_list:
-            arcade.draw_text(str(i), sprite.center_x-5 , sprite.center_y-5, arcade.color.YELLOW, 20)
-            i=i+1
-
-        # Put the text on the screen.
-        output = f"Score: {self.score}"
-        arcade.draw_text(output, SCREEN_WIDTH - 100, SCREEN_HEIGHT - 30, arcade.color.BLACK, 14)
-
-    def on_mouse_release(self, x, y, dx, dy):
-
->>>>>>> 6747fccc9298fd8ab3d88792c62c82ab380a38a4
         sprite_list = arcade.get_sprites_at_point((x, y), self.shirts_list)
         if len(sprite_list) > 0:
             i = 0
@@ -164,11 +126,7 @@ class Game1View(arcade.View):
                     guid = sprite.guid
                     sprite.scale=SPRITE_SCALING
                     sprite.center_x = 50
-<<<<<<< HEAD
                     sprite.center_y = i*HEIGHT/8+sprite.height/2
-=======
-                    sprite.center_y = i*SCREEN_HEIGHT/8+sprite.height/2
->>>>>>> 6747fccc9298fd8ab3d88792c62c82ab380a38a4
                     self.score = self.score-int(guid[1])
                     break
                 i=i+1
@@ -187,11 +145,7 @@ class Game1View(arcade.View):
                     guid = sprite.guid
                     sprite.scale=SPRITE_SCALING
                     sprite.center_x = 150
-<<<<<<< HEAD
                     sprite.center_y = i*HEIGHT/8+sprite.height/2
-=======
-                    sprite.center_y = i*SCREEN_HEIGHT/8+sprite.height/2
->>>>>>> 6747fccc9298fd8ab3d88792c62c82ab380a38a4
                     self.score = self.score-int(guid[1])
                     break
                 i=i+1
