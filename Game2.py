@@ -169,12 +169,16 @@ class FinishScreen(arcade.View):
         time_taken_formatted = 70 - total_time
         if peptop == True:
             extra += 10
+            peptop = False
         elif vegtop == True:
             extra += 10
+            vegtop = False
         elif cheetop == True:
             extra += 10
+            cheetop = False
         elif ontop == True:
             extra += 10
+            ontop = False
         time_taken_formatted2 = f"{time_taken_formatted + extra} points"
         arcade.draw_text(f"Score: {time_taken_formatted2}", WIDTH / 2, 200, arcade.color.BLACK, font_size=15, anchor_x="center")
         arcade.draw_text("Press M to move on", WIDTH/2, 150, arcade.color.BLACK, font_size=15, anchor_x="center")
@@ -188,7 +192,7 @@ class FinishScreen(arcade.View):
 def main():
     from utils import FakeDirector
     window = arcade.Window(WIDTH, HEIGHT, TITLE)
-    my_view.director = FakeDirector(close_on_next_view=True)
+    menu_view.director = FakeDirector(close_on_next_view=True)
     menu_view = Chapter2View()
     window.show_view(menu_view)
     arcade.run()
